@@ -22,6 +22,9 @@ public class 회원가입 {
 	private JTextField t6;
 	private JTextField t8;
 	static UsersDTO dto;
+	static UsersDTO dto1;
+	static UsersDTO dto2;
+	static UsersDTO dto3;
 	static ProjectDAOId dao;
 	static ProjectDAOPw dao1;
 	static int overlapId;
@@ -53,11 +56,11 @@ public class 회원가입 {
 			public void actionPerformed(ActionEvent e) {
 				String id = t1.getText();
 				dao = new ProjectDAOId();
-				dto = dao.selectId(id);
-				if (dto == null) {
+				dto1 = dao.selectId(id);
+				if (dto1 == null) {
 					JOptionPane.showMessageDialog(btnNewButton, "이아이디는 사용하실수 있습니다");
 					overlapId = 1;
-				} else if (dto != null) {
+				} else if (dto1 != null) {
 					JOptionPane.showMessageDialog(btnNewButton, "이아이디는 사용하실수 없습니다");
 					overlapId = 0;
 				}
@@ -108,12 +111,12 @@ public class 회원가입 {
 			public void actionPerformed(ActionEvent e) {
 				String Nicname = t5.getText();
 				dao = new ProjectDAOId();
-				dto = dao.selectId(Nicname);
+				dto2 = dao.selectId(Nicname);
 
-				if (dto == null) {
+				if (dto2 == null) {
 					JOptionPane.showMessageDialog(btnNewButton, "이닉네임는 사용하실수 있습니다");
 					overlapNicname = 1;
-				} else if (dto != null) {
+				} else if (dto2 != null) {
 					JOptionPane.showMessageDialog(btnNewButton, "이닉네임는 사용하실수 없습니다");
 					overlapNicname = 0;
 				}
@@ -137,12 +140,12 @@ public class 회원가입 {
 			public void actionPerformed(ActionEvent e) {
 				String Mail = t6.getText();
 				dao = new ProjectDAOId();
-				dto = dao.selectMail(Mail);
+				dto3 = dao.selectMail(Mail);
 
-				if (dto == null) {
+				if (dto3 == null) {
 					JOptionPane.showMessageDialog(btnNewButton, "이이메일는 사용하실수 있습니다");
 					overlapMail = 1;
-				} else if (dto != null) {
+				} else if (dto3 != null) {
 					JOptionPane.showMessageDialog(btnNewButton, "이이메일는 사용하실수 없습니다");
 					overlapMail = 0;
 				}
@@ -156,11 +159,11 @@ public class 회원가입 {
 		label_5.setFont(new Font("굴림", Font.PLAIN, 40));
 		f.getContentPane().add(label_5);
 
-		combo = new JComboBox<String>(hint);
-		combo.setFont(new Font("Consolas", Font.BOLD, 30));
-		combo.setBackground(new Color(255, 255, 255));
-		combo.setBounds(235, 480, 235, 36);
-		f.getContentPane().add(combo);
+//		combo = new JComboBox<String>(hint);
+//		combo.setFont(new Font("Consolas", Font.BOLD, 30));
+//		combo.setBackground(new Color(255, 255, 255));
+//		combo.setBounds(235, 480, 235, 36);
+//		f.getContentPane().add(combo);
 
 		JLabel label_6 = new JLabel("비밀번호 힌트 정답");
 		label_6.setFont(new Font("굴림", Font.PLAIN, 45));
@@ -185,7 +188,7 @@ public class 회원가입 {
 				int Grade = 0;
 
 				if (overlapMail == 1 && overlapId == 1 && overlapNicname == 1) {
-						if(dto != null && dto != null && dto != null) {
+						if(dto1 == null && dto2 == null && dto3 == null) {
 							dao1 = new ProjectDAOPw();
 							dto = dao1.insert(Id, Name, Pw, Nicname, Mail, Hint, Pwhint, Grade);
 						JOptionPane.showMessageDialog(btnNewButton, "회원가입이 되셧습니다 축하드립니다");
@@ -200,6 +203,17 @@ public class 회원가입 {
 		});
 		btnNewButton_1.setFont(new Font("굴림", Font.PLAIN, 80));
 		f.getContentPane().add(btnNewButton_1);
+		
+		JButton button_2 = new JButton("메인창으로 돌아가기");
+		button_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				비밀번호찾기 Pw = new 비밀번호찾기();
+				
+			}
+		});
+		button_2.setFont(new Font("굴림", Font.PLAIN, 80));
+		f.getContentPane().add(button_2);
 
 		f.setVisible(true);
 	}

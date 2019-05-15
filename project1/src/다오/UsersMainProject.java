@@ -26,8 +26,9 @@ public class UsersMainProject {
 	private static JTextField t1;
 	private static JTextField t2;
 	static UsersDTO dto;
-	static ProjectDAOPw dao;
-	static ProjectDAOId dao1;
+	static ProjectDAOId dao;
+	static String id; 
+	static String name = null; 
 	
 	public static void main(String[] args) throws Exception {
 		JFrame f = new JFrame();
@@ -61,6 +62,8 @@ public class UsersMainProject {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				회원가입 SignUp = new 회원가입();
+				
+				
 				
 				
 			}
@@ -104,10 +107,16 @@ public class UsersMainProject {
 		JButton btnNewButton_2 = new JButton("Login");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				String Id = t1.getText();
+				id = Id;
 				String Pw = t2.getText();
-				dao1 = new ProjectDAOId();
-				dto = dao1.selectLogin(Id,Pw);
+				dao = new ProjectDAOId();
+				dto = dao.selectLogin(Id,Pw);
+
+				
+				
+				
 				
 				
 				if(dto != null && dto != null) 
@@ -120,6 +129,10 @@ public class UsersMainProject {
 				
 				
 			}
+
+			
+
+			
 		});
 		btnNewButton_2.setFont(new Font("굴림", Font.PLAIN, 65));
 		f.getContentPane().add(btnNewButton_2);
@@ -132,6 +145,15 @@ public class UsersMainProject {
 		
 		f.setVisible(true);
 	}
+	
+	
+
+	public static String getId() {
+		return id;
+	}
+//	public static String getName() {
+//		return name;
+//	}
 	
 	
 

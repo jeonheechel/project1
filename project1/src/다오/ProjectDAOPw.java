@@ -261,7 +261,7 @@ public UsersDTO delete(String Id  )  {//메서드 만드는중
 }//select
 
 
-public UsersDTO updatePw(String Pw ,String Id  )  {//메서드 만드는중
+public UsersDTO updatePw(String Pw ,String ID  )  {//메서드 만드는중
 	
 	
 	//1. 드라이버 설정
@@ -277,7 +277,7 @@ public UsersDTO updatePw(String Pw ,String Id  )  {//메서드 만드는중
 		String sql = "update users set pw=?  where id =?";
 		ps = con.prepareStatement(sql);
 		ps.setString(1, Pw );
-		ps.setString(2, Id );
+		ps.setString(2, ID );
 	
 		
 		System.out.println("3.SQL 문 객체화 ok.. ");
@@ -312,7 +312,7 @@ public UsersDTO updatePw(String Pw ,String Id  )  {//메서드 만드는중
 					
 }//select
 
-public UsersDTO updateNicname(String Nicname ,String Id  )  {//메서드 만드는중
+public UsersDTO updateNicname(String Nicname ,String ID  )  {//메서드 만드는중
 	
 	
 	//1. 드라이버 설정
@@ -328,7 +328,7 @@ public UsersDTO updateNicname(String Nicname ,String Id  )  {//메서드 만드�
 		String sql = "update users set nicname=?  where id =?";
 		ps = con.prepareStatement(sql);
 		ps.setString(1, Nicname );
-		ps.setString(2, Id );
+		ps.setString(2, ID );
 	
 		
 		System.out.println("3.SQL 문 객체화 ok.. ");
@@ -363,7 +363,7 @@ public UsersDTO updateNicname(String Nicname ,String Id  )  {//메서드 만드�
 					
 }//select
 
-public UsersDTO updateMail(String Mail ,String Id  )  {//메서드 만드는중
+public UsersDTO updateMail(String Mail ,String ID  )  {//메서드 만드는중
 	
 	
 	//1. 드라이버 설정
@@ -379,7 +379,7 @@ public UsersDTO updateMail(String Mail ,String Id  )  {//메서드 만드는중
 		String sql = "update users set mail=?  where id =?";
 		ps = con.prepareStatement(sql);
 		ps.setString(1, Mail );
-		ps.setString(2, Id );
+		ps.setString(2, ID );
 	
 		
 		System.out.println("3.SQL 문 객체화 ok.. ");
@@ -414,7 +414,7 @@ public UsersDTO updateMail(String Mail ,String Id  )  {//메서드 만드는중
 					
 }//select
 
-public UsersDTO updateHint(String hint ,String Id  )  {//메서드 만드는중
+public UsersDTO updateHint(String hint ,String ID  )  {//메서드 만드는중
 	
 	
 	//1. 드라이버 설정
@@ -430,7 +430,7 @@ public UsersDTO updateHint(String hint ,String Id  )  {//메서드 만드는중
 		String sql = "update users set hint=?  where id =?";
 		ps = con.prepareStatement(sql);
 		ps.setString(1, hint );
-		ps.setString(2, Id );
+		ps.setString(2, ID );
 	
 		
 		System.out.println("3.SQL 문 객체화 ok.. ");
@@ -465,7 +465,7 @@ public UsersDTO updateHint(String hint ,String Id  )  {//메서드 만드는중
 					
 }//select
 
-public UsersDTO updatePwhint(String Pwhint ,String Id  )  {//메서드 만드는중
+public UsersDTO updatePwhint(String Pwhint ,String ID  )  {//메서드 만드는중
 	
 	
 	//1. 드라이버 설정
@@ -481,7 +481,7 @@ public UsersDTO updatePwhint(String Pwhint ,String Id  )  {//메서드 만드는
 		String sql = "update users set pwhint=?  where id =?";
 		ps = con.prepareStatement(sql);
 		ps.setString(1, Pwhint );
-		ps.setString(2, Id );
+		ps.setString(2, ID );
 	
 		
 		System.out.println("3.SQL 문 객체화 ok.. ");
@@ -590,6 +590,91 @@ public ArrayList selectAll() {
 
 
 }// selectall
+
+
+public UsersDTO selectName(String Id  )  {//메서드 만드는중
+	
+	
+	//1. 드라이버 설정
+	try {
+		Class.forName("com.mysql.jdbc.Driver");
+		System.out.println("1.드라이버 설정 ok.. ");
+		
+		//2. DB연결
+		con = DriverManager.getConnection(url, user, password);
+		System.out.println("2.DB 연결  ok.. ");
+		
+		//3. SQL문 결정(객체화)
+		String sql = "select * from users where id=?  ";
+		ps = con.prepareStatement(sql);
+		ps.setString(1, Id );
+		
+		
+		
+		
+		System.out.println("3.SQL 문 객체화 ok.. ");
+		
+		
+		//4. SQl문을 전송
+		rs = ps.executeQuery();
+		System.out.println("4.SQL 문 전송 ok.. ");
+		
+		// SQl 문의 결과가 있으면 받아서 처리해라!
+		
+		if(rs.next()) {
+			dto = new UsersDTO();
+			
+			String id = rs.getString(1);
+			String pw = rs.getString(2);
+			String name = rs.getString(3);
+			String nicname = rs.getString(4);
+			String mail = rs.getString(5);
+			int hint = rs.getInt(6);
+			String pwhint = rs.getString(7);
+			
+			
+			
+			
+			//위에서 검색한 값을 순서대로 dto.에다가 넣어준다는 뜻이다
+			
+			
+			
+			System.out.print(id);
+			System.out.print(pw);
+			System.out.print(name);
+			System.out.print(nicname);
+			System.out.print(mail);
+			System.out.print(hint);
+			System.out.print(pwhint);
+			
+			
+			
+					
+		}else {
+			System.out.println("검색 결과가 없습니다!!");
+		}
+		
+		
+	} catch (Exception e) {
+		System.out.println("DB처리중 에러발생");
+		System.out.println(e.getMessage());
+		
+	} finally {
+		//에러 발생 여부와 상관없이 무조건 실행 시켜야하는 코드는 여기다 넣는다
+		 try {
+			rs.close();
+			ps.close();
+			con.close();
+		} catch (Exception e) {
+			//e.printStackTrace();안써도 그만이다
+			System.out.println("자원 해제중 에러발생!!");
+		}//catch
+		 
+	}//try-catch-finally
+	return dto;
+	
+					
+}//select
 
 
 

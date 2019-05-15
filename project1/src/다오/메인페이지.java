@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 
 public class 메인페이지 {
 	
+	
 	public 메인페이지() {
 		JFrame f = new JFrame();
 		f.setTitle("Movie program main window");
@@ -19,6 +20,8 @@ public class 메인페이지 {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				회원정보수정 update = new 회원정보수정(); 
+				
+				
 				
 			}
 		});
@@ -34,6 +37,17 @@ public class 메인페이지 {
 		});
 		button_1.setFont(new Font("굴림", Font.PLAIN, 55));
 		f.getContentPane().add(button_1);
+		
+		JButton button_2 = new JButton("내정보확인");
+		button_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				
+			}
+		});
+		button_2.setFont(new Font("굴림", Font.PLAIN, 55));
+		f.getContentPane().add(button_2);
 		
 		
 		

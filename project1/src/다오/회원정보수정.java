@@ -22,10 +22,18 @@ public class 회원정보수정 {
 	private JTextField t6;
 	private JTextField t7;
 	private JTextField t8;
+	static UsersDTO dto1;
+	static UsersDTO dto2;
 	static UsersDTO dto;
 	static ProjectDAOPw dao;
+	static ProjectDAOId dao1;
+	static ProjectDAOId dao2;
+	UsersMainProject ump = new UsersMainProject(); 
 
 	public 회원정보수정() {
+		dao1 = new ProjectDAOId();
+		dto1 = dao1.selectName(ump.getId());
+	
 		JFrame f = new JFrame();
 		f.getContentPane().setFont(new Font("굴림", Font.PLAIN, 50));
 		f.setTitle("Movie program Membership update window");
@@ -43,6 +51,7 @@ public class 회원정보수정 {
 		t1 = new JTextField();
 		t1.setColumns(20);
 		t1.setFont(new Font("Consolas", Font.PLAIN, 60));
+		t1.setText(ump.getId()); 
 		t1.setEditable(false);
 		f.getContentPane().add(t1);
 		t1.setSize(200, 200);
@@ -64,6 +73,7 @@ public class 회원정보수정 {
 		t4 = new JTextField();
 		t4.setFont(new Font("Consolas", Font.PLAIN, 55));
 		t4.setColumns(17);
+		t4.setText(dto1.getName()); 
 		t4.setEditable(false);
 		f.getContentPane().add(t4);
 		
@@ -106,33 +116,35 @@ public class 회원정보수정 {
 		JButton btnNewButton = new JButton("MemberShipUpdate");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dao = new ProjectDAOPw();
-				ArrayList list = dao.selectAll();
-				String Id = (String)list.get(1);
+				String ID = t1.getText();
+				dao1 = new ProjectDAOId();
+				dto1 = dao1.selectName(ump.getId());
+				
+				String Id = t1.getText();
 				String Pw = t2.getText();
 				
 				
 				dao = new ProjectDAOPw();
-				dto = dao.updatePw(Pw, Id);
+				dto = dao.updatePw(Pw, ID);
 				
 				
 				
 				String Nicname = t5.getText();
 				dao = new ProjectDAOPw();
-				dto = dao.updateNicname(Nicname, Id);
+				dto = dao.updateNicname(Nicname, ID);
 				
 				
 				String Mail = t6.getText();
 				dao = new ProjectDAOPw();
-				dto = dao.updateMail(Mail, Id);
+				dto = dao.updateMail(Mail, ID);
 				
 				String Hint = t7.getText();
 				dao = new ProjectDAOPw();
-				dto = dao.updateHint(Hint, Id);
+				dto = dao.updateHint(Hint, ID);
 				
 				String Pwhint = t8.getText();
 				dao = new ProjectDAOPw();
-				dto = dao.updatePwhint(Pwhint, Id);
+				dto = dao.updatePwhint(Pwhint, ID);
 				
 				
 				
