@@ -6,6 +6,7 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 import java.awt.Font;
 import javax.swing.JButton;
@@ -14,7 +15,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 
-public class 비밀번호찾기 {
+public class 비밀번호찾기 extends JPanel{
 	private JTextField t1;
 	private JTextField t2;
 	private JTextField textField_2;
@@ -25,59 +26,77 @@ public class 비밀번호찾기 {
 	JComboBox combo;
 	
 	public 비밀번호찾기() {
-		JFrame f = new JFrame();
-		f.setTitle("비밀번호 찾기");
-		f.setSize(800,800);
-		f.getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		setLayout(null);
+		setBounds(0, 0, 800,800);
+		JPanel p1 = new JPanel();
+		p1.setBounds(0,0,800,800);
+		add(p1);
+		p1.setLayout(null);
+		p1.setVisible(true);
+		JPanel p2 = new JPanel();
+		p2.setBounds(0,0,900,900);
+		add(p2);
+		p2.setLayout(null);
+		p2.setVisible(false);
 		
-		JLabel label = new JLabel("");
-		f.getContentPane().add(label);
+		
 		
 		JLabel label_1 = new JLabel("아이디 입력");
 		label_1.setFont(new Font("굴림", Font.PLAIN, 45));
-		f.getContentPane().add(label_1);
+		p1.add(label_1);
+		label_1.setBounds(0, 0, 300, 100);
 		
 		t1 = new JTextField();
 		t1.setFont(new Font("굴림", Font.PLAIN, 45));
-		f.getContentPane().add(t1);
+		p1.add(t1);
+		t1.setBounds(310, 0, 400, 100);
 		t1.setColumns(10);
 		
 		JLabel label_2 = new JLabel("이름 입력");
 		label_2.setFont(new Font("굴림", Font.PLAIN, 45));
-		f.getContentPane().add(label_2);
+		p1.add(label_2);
+		label_2.setBounds(0, 150, 300, 100);
+		
 		
 		t2 = new JTextField();
 		t2.setFont(new Font("굴림", Font.PLAIN, 40));
 		t2.setColumns(10);
-		f.getContentPane().add(t2);
+		p1.add(t2);
+		t2.setBounds(310, 150, 400, 100);
+		
 		
 		JLabel label_3 = new JLabel("힌트입력");
 		label_3.setFont(new Font("굴림", Font.PLAIN, 60));
-		f.getContentPane().add(label_3);
+		p1.add(label_3);
+		label_3.setBounds(0, 300, 300, 100);
+		
+		
 		combo = new JComboBox<String>(hint);
 		combo.setFont(new Font("Consolas",Font.BOLD,30));
 		combo.setBackground(new Color(255,255,255));
-		combo.setBounds(235, 480, 235, 36);
-		f.getContentPane().add(combo);
+		combo.setBounds(310, 300, 450, 100);
+		p1.add(combo);
 		
 		
 		JLabel label_4 = new JLabel("힌트 답 입력");
 		label_4.setFont(new Font("굴림", Font.PLAIN, 48));
-		
+		label_4.setBounds(0, 500, 300, 100);
 		
 	
 		
 		JLabel label_5 = new JLabel("힌트답입력");
-		label_5.setFont(new Font("굴림", Font.PLAIN, 60));
-		f.getContentPane().add(label_5);
+		label_5.setFont(new Font("굴림", Font.PLAIN, 50));
+		p1.add(label_5);
+		label_5.setBounds(0, 500, 400, 100);
 		
 		t4 = new JTextField();
-		t4.setFont(new Font("굴림", Font.PLAIN, 55));
+		t4.setFont(new Font("굴림", Font.PLAIN, 50));
 		t4.setColumns(10);
-		f.getContentPane().add(t4);
+		p1.add(t4);
+		t4.setBounds(300, 500, 400, 100);
 		
-		JButton button = new JButton("비밀번호찾기");
-		button.addActionListener(new ActionListener() {
+		JButton b1 = new JButton("비밀번호찾기");
+		b1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String id = t1.getText();
 				String name = t2.getText();
@@ -85,12 +104,24 @@ public class 비밀번호찾기 {
 				String pwhint = t4.getText();
 				 dao = new ProjectDAOPw();
 			     dto = dao.select(id, name, hint, pwhint);
-			     JOptionPane.showMessageDialog(button, "Your PW is" +"'"+ dto.getPw() +"' It is");
+			     JOptionPane.showMessageDialog(b1, "Your PW is" +"'"+ dto.getPw() +"' It is");
 				
 			}
 		});
-		button.setFont(new Font("굴림", Font.PLAIN, 38));
-		f.getContentPane().add(button);
+		b1.setFont(new Font("굴림", Font.PLAIN, 38));
+		p1.add(b1);
+		b1.setBounds(0, 610, 400, 180);
+		
+		JButton b2 = new JButton("메인창으로 가기");
+		b2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+			}
+		});
+		b2.setFont(new Font("굴림", Font.PLAIN, 38));
+		b2.setBounds(400, 610, 400, 180);
+		p1.add(b2);
 		
 		
 		
@@ -98,8 +129,6 @@ public class 비밀번호찾기 {
 		
 		
 		
-		f.setVisible(true);
+		
 	}
-
-	
 }
