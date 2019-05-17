@@ -112,11 +112,13 @@ public class 비밀번호찾기 extends JPanel{
 		p1.add(b1);
 		b1.setBounds(0, 610, 400, 180);
 		
-		JButton b2 = new JButton("메인창으로 가기");
+		JButton b2 = new JButton("login page");
 		b2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				
+				UsersMainProject ump = new UsersMainProject();
+				p2.add(ump);
+				p2.setVisible(true);
+				p1.setVisible(false);
 			}
 		});
 		b2.setFont(new Font("굴림", Font.PLAIN, 38));

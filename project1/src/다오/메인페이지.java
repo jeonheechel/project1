@@ -10,6 +10,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class 메인페이지 extends JPanel{
+	static ProjectDAOId dao1;
+	static UsersDTO dto1;
+	UsersMainProject ump = new UsersMainProject(); 
 	
 	
 	public 메인페이지() {
@@ -53,7 +56,7 @@ public class 메인페이지 extends JPanel{
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				회원정보삭제 delete = new 회원정보삭제();
-				//p2.add(delete);
+				p2.add(delete);
 				p2.setVisible(true);
 				p1.setVisible(false);
 				
@@ -63,14 +66,18 @@ public class 메인페이지 extends JPanel{
 		p1.add(button_1);
 		button_1.setBounds(200, 300, 500, 100);
 		
-		JButton button_2 = new JButton("내정보확인");
+		JButton button_2 = new JButton("게시글 쓰러가기");
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				p2.add(update);
-//				p2.setVisible(true);
-//				p1.setVisible(false);
+				dao1 = new ProjectDAOId();
+				dto1 = dao1.selectName(ump.getId());
+				if(dto1.getId() != null ) {
+					BoardPage bp = new BoardPage();
+					p2.add(bp);
+					p2.setVisible(true);
+					p1.setVisible(false);
 				
-				
+				}
 			}
 		});
 		button_2.setFont(new Font("굴림", Font.PLAIN, 55));

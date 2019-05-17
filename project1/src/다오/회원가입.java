@@ -238,7 +238,7 @@ public class 회원가입 extends JPanel{
 		p1.add(btnNewButton_1);
 		btnNewButton_1.setBounds(0, 750, 350, 100);
 		
-		JButton button_2 = new JButton("메인창으로 가기");
+		JButton button_2 = new JButton("login page");
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				UsersMainProject ump = new UsersMainProject();

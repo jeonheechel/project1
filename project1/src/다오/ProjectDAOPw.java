@@ -414,7 +414,7 @@ public UsersDTO updateMail(String Mail ,String ID  )  {//메서드 만드는중
 					
 }//select
 
-public UsersDTO updateHint(String hint ,String ID  )  {//메서드 만드는중
+public UsersDTO updateHint(int hint ,String ID  )  {//메서드 만드는중
 	
 	
 	//1. 드라이버 설정
@@ -429,7 +429,7 @@ public UsersDTO updateHint(String hint ,String ID  )  {//메서드 만드는중
 		//3. SQL문 결정(객체화)
 		String sql = "update users set hint=?  where id =?";
 		ps = con.prepareStatement(sql);
-		ps.setString(1, hint );
+		ps.setInt(1, hint );
 		ps.setString(2, ID );
 	
 		
@@ -636,7 +636,13 @@ public UsersDTO selectName(String Id  )  {//메서드 만드는중
 			
 			
 			//위에서 검색한 값을 순서대로 dto.에다가 넣어준다는 뜻이다
-			
+			dto.setId(id);
+			dto.setPw(pw);
+			dto.setName(name);
+			dto.setNicname(nicname);
+			dto.setMail(mail);
+			dto.setHint(hint);
+			dto.setPwhint(pwhint);
 			
 			
 			System.out.print(id);
@@ -675,6 +681,9 @@ public UsersDTO selectName(String Id  )  {//메서드 만드는중
 	
 					
 }//select
+
+
+
 
 
 

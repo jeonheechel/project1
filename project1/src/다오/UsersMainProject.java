@@ -64,7 +64,7 @@ public class UsersMainProject extends JPanel{
 		t1.setFont(new Font("굴림", Font.PLAIN, 80));
 		t1.setColumns(10);
 		p1.add(t1);
-		t1.setBounds(122, 110, 600, 100);
+		t1.setBounds(146, 96, 600, 100);
 		
 		JLabel label_2 = new JLabel("PW");
 		label_2.setBounds(10,200,100,100);
@@ -75,7 +75,7 @@ public class UsersMainProject extends JPanel{
 		t2.setFont(new Font("굴림", Font.PLAIN, 80));
 		t2.setColumns(10);
 		p1.add(t2);
-		t2.setBounds(110,200,600,100);
+		t2.setBounds(146,206,600,100);
 		
 		
 		
@@ -100,7 +100,7 @@ public class UsersMainProject extends JPanel{
 		b2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				아이디찾기 Id = new 아이디찾기();
-				//p2.add(Id);
+				p2.add(Id);
 				p2.setVisible(true);
 				p1.setVisible(false);
 				
