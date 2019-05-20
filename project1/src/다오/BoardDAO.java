@@ -18,7 +18,7 @@ public class BoardDAO {
 	
 	public ArrayList selectAll() {
 		ArrayList list = new ArrayList();
-		UsersDTO  dto = null;
+		BoardDTO  dto = null;
 		// 1. 드라이버 설정
 				try {
 					Class.forName("com.mysql.jdbc.Driver");
@@ -29,7 +29,7 @@ public class BoardDAO {
 					System.out.println("2.DB 연결  ok.. ");
 
 					// 3. SQL문 결정(객체화)
-					String sql = "select * from users ";
+					String sql = "select * from whiteboard ";
 					ps = con.prepareStatement(sql);
 					
 					System.out.println("3.SQL 문 객체화 ok.. ");
@@ -42,22 +42,19 @@ public class BoardDAO {
 
 		
 		while(rs.next()) {
-			dto = new UsersDTO();
-			String id = rs.getString(1);
-			String pw = rs.getString(2);
+			dto = new BoardDTO();
+			int number = rs.getInt(1);
+			String id = rs.getString(2);
 			String name = rs.getString(3);
-			String nicname = rs.getString(4);
-			String mail = rs.getString(5);
-			int hint = rs.getInt(6);
-			String pwhint = rs.getString(7);
+			String title = rs.getString(4);
+			String content = rs.getString(5);
 			//위에서 검색한 값을 순서대로 dto.에다가 넣어준다는 뜻이다
+			dto.setNumber(number);
 			dto.setId(id);
-			dto.setPw(pw);
 			dto.setName(name);
-			dto.setNicname(nicname);
-			dto.setMail(mail);
-			dto.setHint(hint);
-			dto.setPwhint(pwhint);
+			dto.setTitle(title);
+			dto.setContent(content);
+			
 			
 			list.add(dto);
 					

@@ -69,16 +69,16 @@ public class 메인페이지 extends JPanel{
 		JButton button_2 = new JButton("게시글 쓰러가기");
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dao1 = new ProjectDAOId();
-				dto1 = dao1.selectName(ump.getId());
-				if(dto1.getId() != null ) {
+//				dao1 = new ProjectDAOId();
+//				dto1 = dao1.selectName(ump.getId());
+				
 					BoardPage bp = new BoardPage();
 					p2.add(bp);
 					p2.setVisible(true);
 					p1.setVisible(false);
 				
 				}
-			}
+			
 		});
 		button_2.setFont(new Font("굴림", Font.PLAIN, 55));
 		p1.add(button_2);
