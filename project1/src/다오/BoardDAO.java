@@ -86,8 +86,299 @@ public class BoardDAO {
 
 
 	}// selectall
+	
+	
+	
+	public ArrayList selectOther() {
+		ArrayList list = new ArrayList();
+		BoardDTO  dto = null;
+		// 1. 드라이버 설정
+				try {
+					Class.forName("com.mysql.jdbc.Driver");
+					System.out.println("1.드라이버 설정 ok.. ");
 
+					// 2. DB연결
+					con = DriverManager.getConnection(url, user, password);
+					System.out.println("2.DB 연결  ok.. ");
+
+					// 3. SQL문 결정(객체화)
+					String sql = "select number,id,name,title,content from whiteboard order by number desc ";
+					ps = con.prepareStatement(sql);
+					
+					
+					
+					System.out.println("3.SQL 문 객체화 ok.. ");
+
+					// 4. SQl문을 전송
+					rs = ps.executeQuery();
+					System.out.println("4.SQL 문 전송 ok.. ");
+
+					// SQl 문의 결과가 있으면 받아서 처리해라!
+
+		
+		while(rs.next()) {
+			dto = new BoardDTO();
+			int number = rs.getInt(1);
+			String id = rs.getString(2);
+			String name = rs.getString(3);
+			String title = rs.getString(4);
+			String content = rs.getString(5);
+			//위에서 검색한 값을 순서대로 dto.에다가 넣어준다는 뜻이다
+			dto.setNumber(number);
+			dto.setId(id);
+			dto.setName(name);
+			dto.setTitle(title);
+			dto.setContent(content);
+			
+			
+			list.add(dto);
+					
+		}
+		
+		
+	} catch (Exception e) {
+		System.out.println("DB처리중 에러발생");
+		System.out.println(e.getMessage());
+		
+	} finally {
+		//에러 발생 여부와 상관없이 무조건 실행 시켜야하는 코드는 여기다 넣는다
+		 try {
+			rs.close();
+			ps.close();
+			con.close();
+		} catch (Exception e) {
+			//e.printStackTrace();안써도 그만이다
+			System.out.println("자원 해제중 에러발생!!");
+		}//catch
+		 
+	}//try-catch-finally
+		
+		return list;
+
+
+
+
+
+
+	}// selectall
+	
+	
+	public void insert(int Number , String Id, String Name, String Title, String Content )  {//메서드 만드는중
+		
+		
+		//1. 드라이버 설정
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			System.out.println("1.드라이버 설정 ok.. ");
+			
+			//2. DB연결
+			con = DriverManager.getConnection(url, user, password);
+			System.out.println("2.DB 연결  ok.. ");
+			
+			//3. SQL문 결정(객체화)
+			String sql = "insert into users values(?,?,?,?,?)";
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, Number );
+			ps.setString(2, Id );
+			ps.setString(3, Name );
+			ps.setString(4, Title );
+			ps.setString(5, Content );
+			
+			
+			System.out.println("3.SQL 문 객체화 ok.. ");
+			
+			
+			//4. SQl문을 전송
+			ps.executeUpdate();
+			System.out.println("4.SQL 문 전송 ok.. ");
+			
+			
+			
+			
+			
+			
+		} catch (Exception e) {
+			System.out.println("DB처리중 에러발생");
+			System.out.println(e.getMessage());
+			
+		} finally {
+			//에러 발생 여부와 상관없이 무조건 실행 시켜야하는 코드는 여기다 넣는다
+			 try {
+				ps.close();
+				con.close();
+			} catch (Exception e) {
+				//e.printStackTrace();안써도 그만이다
+				System.out.println("자원 해제중 에러발생!!");
+			}//catch
+			 
+		}//try-catch-finally
+		
+		
+						
+	}//insert
+	
+	
+	
+	public void delete(String Id )  {//메서드 만드는중
+		
+		
+		//1. 드라이버 설정
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			System.out.println("1.드라이버 설정 ok.. ");
+			
+			//2. DB연결
+			con = DriverManager.getConnection(url, user, password);
+			System.out.println("2.DB 연결  ok.. ");
+			
+			//3. SQL문 결정(객체화)
+			String sql = "delete from users where id=?";
+			ps = con.prepareStatement(sql);
+			ps.setString(1, Id );
+			
+			
+			
+			
+			System.out.println("3.SQL 문 객체화 ok.. ");
+			
+			
+			//4. SQl문을 전송
+			ps.executeUpdate();
+			System.out.println("4.SQL 문 전송 ok.. ");
+			
+			
+			
+			
+			
+			
+		} catch (Exception e) {
+			System.out.println("DB처리중 에러발생");
+			System.out.println(e.getMessage());
+			
+		} finally {
+			//에러 발생 여부와 상관없이 무조건 실행 시켜야하는 코드는 여기다 넣는다
+			 try {
+				ps.close();
+				con.close();
+			} catch (Exception e) {
+				//e.printStackTrace();안써도 그만이다
+				System.out.println("자원 해제중 에러발생!!");
+			}//catch
+			 
+		}//try-catch-finally
+		
+		
+						
+	}//delete end
+	
+	
+	public void updateTitle(String Title ,String Content  )  {//메서드 만드는중
+		
+		
+		//1. 드라이버 설정
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			System.out.println("1.드라이버 설정 ok.. ");
+			
+			//2. DB연결
+			con = DriverManager.getConnection(url, user, password);
+			System.out.println("2.DB 연결  ok.. ");
+			
+			//3. SQL문 결정(객체화)
+			String sql = "update users set content=?  where title=?";
+			ps = con.prepareStatement(sql);
+			ps.setString(1, Content );
+			ps.setString(2, Title );
+		
+			
+			System.out.println("3.SQL 문 객체화 ok.. ");
+			
+			
+			//4. SQl문을 전송
+			ps.executeUpdate();
+			System.out.println("4.SQL 문 전송 ok.. ");
+			
+			
+			
+			
+			
+			
+		} catch (Exception e) {
+			System.out.println("DB처리중 에러발생");
+			System.out.println(e.getMessage());
+			
+		} finally {
+			//에러 발생 여부와 상관없이 무조건 실행 시켜야하는 코드는 여기다 넣는다
+			 try {
+				ps.close();
+				con.close();
+			} catch (Exception e) {
+				//e.printStackTrace();안써도 그만이다
+				System.out.println("자원 해제중 에러발생!!");
+			}//catch
+			 
+		}//try-catch-finally
+		
+						
+	}//update end
+	
+public void updateContent(String Title ,String Content  )  {//메서드 만드는중
+		
+		
+		//1. 드라이버 설정
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			System.out.println("1.드라이버 설정 ok.. ");
+			
+			//2. DB연결
+			con = DriverManager.getConnection(url, user, password);
+			System.out.println("2.DB 연결  ok.. ");
+			
+			//3. SQL문 결정(객체화)
+			String sql = "update users set title=?  where content=?";
+			ps = con.prepareStatement(sql);
+			ps.setString(1, Title );
+			ps.setString(2, Content );
+		
+			
+			System.out.println("3.SQL 문 객체화 ok.. ");
+			
+			
+			//4. SQl문을 전송
+			ps.executeUpdate();
+			System.out.println("4.SQL 문 전송 ok.. ");
+			
+			
+			
+			
+			
+			
+		} catch (Exception e) {
+			System.out.println("DB처리중 에러발생");
+			System.out.println(e.getMessage());
+			
+		} finally {
+			//에러 발생 여부와 상관없이 무조건 실행 시켜야하는 코드는 여기다 넣는다
+			 try {
+				ps.close();
+				con.close();
+			} catch (Exception e) {
+				//e.printStackTrace();안써도 그만이다
+				System.out.println("자원 해제중 에러발생!!");
+			}//catch
+			 
+		}//try-catch-finally
+		
+						
+	}//update end
+
+
+
+	
 	
 
 
-}
+
+
+
+}//class end
