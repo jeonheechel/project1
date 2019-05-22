@@ -30,7 +30,8 @@ public class 메인페이지 extends JPanel{
 		p2.setBounds(0,0,900,900);
 		add(p2);
 		p2.setLayout(null);
-		p2.setVisible(false);
+		p2.setVisible(true);
+		
 		
 		
 		

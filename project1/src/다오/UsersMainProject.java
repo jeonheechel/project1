@@ -31,10 +31,14 @@ public class UsersMainProject extends JPanel{
 	static UsersDTO dto;
 	static ProjectDAOId dao;
 	static String id; 
-	static String name = null; 
+	public String name; 
 	
 	
 	public UsersMainProject() {
+		
+		
+		
+		
 		
 		setLayout(null);
 		setBounds(0, 0, 900, 900);
@@ -198,6 +202,8 @@ public class UsersMainProject extends JPanel{
 	public static String getId() {
 		return id;
 	}
+	
+	
 
 	
 	

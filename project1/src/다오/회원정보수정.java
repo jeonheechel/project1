@@ -45,12 +45,14 @@ public class 회원정보수정 extends JPanel{
 	String[] hint = { "0  Choose", "My hometown is", "My first pet is", "My Treasure No. 1", "My parents' name is",
 	"My first nickname is" };
 	JComboBox combo;
+	static String name;
 
 	public 회원정보수정() {
 		dao1 = new ProjectDAOId();
 		dto1 = dao1.selectName(ump.getId());
 		dao1 = new ProjectDAOId();
 		dto1 = dao1.selectName(ump.getId());
+		name = dto1.getName();
 		
 		setLayout(null);
 		setBounds(0, 0, 900,900);
@@ -271,4 +273,8 @@ public class 회원정보수정 extends JPanel{
 		
 		
 	}
+	public  String getName() {
+		return name;
+	}
+
 }

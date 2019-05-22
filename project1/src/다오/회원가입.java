@@ -214,7 +214,7 @@ public class 회원가입 extends JPanel{
 				String Id = t1.getText();
 				String Name = t2.getText();
 				String Pw = t4.getText();
-				String Nicname = t5.getText();
+				String Nicname = t5.getText(); 
 				String Mail = t6.getText();
 				int Hint = combo.getSelectedIndex();
 				String Pwhint = t8.getText();

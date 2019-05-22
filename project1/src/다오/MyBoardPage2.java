@@ -14,7 +14,7 @@ import javax.swing.SwingConstants;
 
 import javax.swing.JTextField;
 
-public class BoardPage extends JPanel{
+public class MyBoardPage2 extends JPanel{
 	JTextField[] jtf1; 
 	
 	JTextField[] jtf2; 
@@ -28,20 +28,21 @@ public class BoardPage extends JPanel{
 	private JLabel label;
 	private JLabel label_1;
 	private JLabel label_2;
+	UsersMainProject ump = new UsersMainProject(); 
 	//선언
 	int[] board1;
 	String[] board2;
 	String[] board3;
 	String[] board4;
 	String[] board5;
-	 int y = 310;
-	 String title = null;
+	 int y = 250;
 	
 	
-	public BoardPage() {
+	public MyBoardPage2() {
 		BoardDAO dao = new BoardDAO();
-		ArrayList list = dao.selectOther();
+		ArrayList list = dao.selectId(ump.getId());
 		System.out.println(list);
+		
 		
 		//초기화부분
 		board1 = new int[list.size()];
@@ -53,6 +54,7 @@ public class BoardPage extends JPanel{
 		jtf2 = new JTextField[list.size()];
 		jtf3 = new JTextField[list.size()];
 		jb = new JButton[list.size()];
+		
 		for (int i = 0; i < list.size(); i++) {//전체 출력하기
 			BoardDTO dto = (BoardDTO)list.get(i);
 			
@@ -82,7 +84,7 @@ public class BoardPage extends JPanel{
 		setLayout(null);
 		setBounds(0, 0, 900,900);
 		JPanel p1 = new JPanel();
-		p1.setBounds(0,0,900,900);
+		p1.setBounds(0,0,913,900);
 		add(p1);
 		p1.setLayout(null);
 		JPanel p2 = new JPanel();
@@ -136,20 +138,18 @@ public class BoardPage extends JPanel{
 		
 		
 		//버튼 출력
-	    y=310;
+	    y=250;
 	    for (int i = 0; i < board4.length; i++) {
 	    	final int  a = i;
 	    	jb[i].addActionListener(new ActionListener() {
 	    		public void actionPerformed(ActionEvent e) {
 	    			
 						
-	    			게시판출력2 board = new 게시판출력2(board4[a]);
-	    				p2.add(board);
+	    				게시판출력 name = new 게시판출력(board4[a]);
+	    				p2.add(name);
 	    				p2.setVisible(true);
 	    				p1.setVisible(false);
-	    				
 					
-
 	    		}
 	    	});
 	    	jb[i].setBounds(192, y, 357, 23);
@@ -168,10 +168,9 @@ public class BoardPage extends JPanel{
 				p1.setVisible(false);
 				
 				
-				
 			}
 		});
-		y=310;
+		y=250;
 		for (int i = 0; i < board3.length; i++) {
 			
 			jtf2[i] = new JTextField();
@@ -190,7 +189,7 @@ public class BoardPage extends JPanel{
 				}
 		
 		//아이디 텍스트 출력
-		y=310;
+		y=250;
 		for (int i = 0; i < board2.length; i++) {
 					
 			jtf3[i] = new JTextField();
@@ -216,20 +215,6 @@ public class BoardPage extends JPanel{
 		button.setBounds(12, 10, 260, 60);
 		p1.add(button);
 		
-		JButton button_1 = new JButton("내가쓴글 목록으로");
-		button_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				MyBoardPage2 bp2 = new MyBoardPage2();
-				p2.add(bp2);
-				p2.setVisible(true);
-				p1.setVisible(false);
-				
-			}
-		});
-		button_1.setFont(new Font("굴림", Font.PLAIN, 20));
-		button_1.setBounds(606, 10, 260, 60);
-		p1.add(button_1);
-		
 		JButton button_3 = new JButton("메인페이지로 돌아가기");
 		button_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -241,27 +226,27 @@ public class BoardPage extends JPanel{
 			}
 		});
 		button_3.setFont(new Font("굴림", Font.PLAIN, 20));
-		button_3.setBounds(12, 80, 854, 50);
+		button_3.setBounds(570, 15, 306, 50);
 		p1.add(button_3);
 		
 		lblNewLabel_1 = new JLabel("게시글번호");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setBounds(12, 243, 139, 30);
+		lblNewLabel_1.setBounds(12, 172, 139, 30);
 		p1.add(lblNewLabel_1);
 		
 		label = new JLabel("제목");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
-		label.setBounds(211, 243, 357, 30);
+		label.setBounds(206, 172, 357, 30);
 		p1.add(label);
 		
 		label_1 = new JLabel("이름");
 		label_1.setHorizontalAlignment(SwingConstants.CENTER);
-		label_1.setBounds(622, 243, 139, 30);
+		label_1.setBounds(619, 172, 139, 30);
 		p1.add(label_1);
 		
 		label_2 = new JLabel("아이디");
 		label_2.setHorizontalAlignment(SwingConstants.CENTER);
-		label_2.setBounds(773, 243, 116, 30);
+		label_2.setBounds(770, 172, 116, 30);
 		p1.add(label_2);
 		
 		

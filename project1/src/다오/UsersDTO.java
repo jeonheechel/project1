@@ -1,7 +1,10 @@
 package 다오;
 
 public class UsersDTO {
+	private int number;
 	
+	private String title;
+	private String content;
 	private String id;
 	private String pw;
 	private String name;
@@ -12,7 +15,24 @@ public class UsersDTO {
 	private int grade;
 	
 	
-	
+	public int getNumber() {
+		return number;
+	}
+	public void setNumber(int number) {
+		this.number = number;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
 	public String getId() {
 		return id;
 	}
@@ -58,6 +78,14 @@ public class UsersDTO {
 	public int getGrade() {
 		return grade;
 	}
+	public void setGrade(int grade) {
+		this.grade = grade;
+	}
+	
+	
+	
+	
+	
 	
 	
 	
