@@ -1,0 +1,159 @@
+@charset "UTF-8";
+#roof{
+	background-color: pink;
+	height: 800px;
+	width: 1600px;
+	
+}
+.idname{
+	position: absolute;
+	margin-left: 220px;
+	margin-top: 90px;
+	width: 100px;
+	height: 100px;
+	text-align: center;
+	color: #350909;
+}
+.idname1{
+	position: absolute;
+	margin-left: 220px;
+	margin-top: 180px;
+	width: 100px;
+	height: 100px;
+	text-align: center;
+	color: #350909;
+}
+.idname2{
+	position: absolute;
+	margin-left: 220px;
+	margin-top: 270px;
+	width: 100px;
+	height: 100px;
+	text-align: center;
+	color: #350909;
+}
+.idname3{
+	position: absolute;
+	margin-left: 220px;
+	margin-top: 360px;
+	width: 100px;
+	height: 100px;
+	text-align: center;
+	color: #350909;
+}
+.idname4{
+	position: absolute;
+	margin-left: 220px;
+	margin-top: 450px;
+	width: 100px;
+	height: 100px;
+	text-align: center;
+	color: #350909;
+}
+.idname5{
+	position: absolute;
+	margin-left: 220px;
+	margin-top: 540px;
+	width: 100px;
+	height: 100px;
+	text-align: center;
+	color: #350909;
+}
+.idname6{
+	position: absolute;
+	margin-left: 220px;
+	margin-top: 630px;
+	width: 100px;
+	height: 100px;
+	text-align: center;
+	color: #350909;
+}
+.idname7{
+	position: absolute;
+	margin-left: 220px;
+	margin-top: 720px;
+	width: 100px;
+	height: 100px;
+	text-align: center;
+	color: #350909;
+}
+
+
+input.id{
+	position: absolute;
+	margin-left: 500px;
+	margin-top: -10px;
+	width: 500px;
+	height: 50px;
+	border: solid #F46868 2px;
+}
+input.id1{
+	position: absolute;
+	margin-left: 516px;
+	margin-top: -10px;
+	width: 500px;
+	height: 50px;
+	border: solid #F46868 2px;
+}
+input.id2{
+	position: absolute;
+	margin-left: 495px;
+	margin-top: -10px;
+	width: 500px;
+	height: 50px;
+	border: solid #F46868 2px;
+}
+input.id3{
+	position: absolute;
+	margin-left: 485px;
+	margin-top: -10px;
+	width: 500px;
+	height: 50px;
+	border: solid #F46868 2px;
+}
+input.id4{
+	position: absolute;
+	margin-left: 515px;
+	margin-top: -10px;
+	width: 500px;
+	height: 50px;
+	border: solid #F46868 2px;
+}
+input.id5{
+	position: absolute;
+	margin-left: 510px;
+	margin-top: -10px;
+	width: 500px;
+	height: 50px;
+	border: solid #F46868 2px;
+}
+input.id6{
+	position: absolute;
+	margin-left: 510px;
+	margin-top: -10px;
+	width: 500px;
+	height: 50px;
+	border: solid #F46868 2px;
+}
+input.id7{
+	position: absolute;
+	margin-left: 520px;
+	margin-top: -10px;
+	width: 500px;
+	height: 50px;
+	border: solid #F46868 2px;
+}
+.id8{
+	
+	margin-top: 800px;
+	position: absolute;
+	width: 1600px;
+	height: 100px;
+	overflow: hidden;
+	border: none;
+	background-color: lime;
+	cursor: pointer;
+	margin-left: -2px;	
+	
+	
+}
