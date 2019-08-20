@@ -39,7 +39,7 @@
 		 
 		 
 		 
-		<button type="submit" value="중고 책 등록" class="id8" >중고 책 등록</button>
+		<input type="submit" value="중고 책 등록" class="id8" >
 		
 	</form>
 	</div>

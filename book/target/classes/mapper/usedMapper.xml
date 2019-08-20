@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="uDAO">
+
+	<select id="select" parameterType="uDTO" resultMap="rsMap">
+		SELECT * FROM used
+		WHERE id = #{booktitle}
+	</select>
+
+	<resultMap type="uDTO" id="rsMap">
+		<result property="booktitle" column="booktitle" />
+		<result property="bookcontent" column="bookcontent" />
+		<result property="bookgenre" column="bookgenre" />
+		<result property="bookauthor" column="bookauthor" />
+		<result property="bookprice" column="bookprice" />
+		<result property="bookuser" column="bookuser" />
+		<result property="booktel" column="booktel" />
+		<result property="bookaddr" column="bookaddr" />
+	</resultMap>
+
+	<select id="selectAll" resultMap="rsMap">
+		SELECT * FROM used
+	</select>
+
+	<insert id="insert" parameterType="uDTO">
+		INSERT INTO used
+		VALUES(#{booktitle},#{bookcontent},#{bookgenre},#{bookauthor},#{bookprice},#{bookuser},#{booktel},#{bookaddr})
+	</insert>
+
+	
+
+	<delete id="delete" parameterType="uDTO">
+		DELETE FROM used WHERE
+		id = #{booktitle}
+	</delete>
+
+</mapper>

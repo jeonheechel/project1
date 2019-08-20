@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+	
+	
+		<typeAlias type="com.seohyang.book.UsedDAO" alias="uDAO"></typeAlias>
+		<typeAlias type="com.seohyang.book.UsedDTO" alias="uDTO"></typeAlias>
+		<!-- <typeAlias type="com.itbank.mvc10.MemberDTO" alias="mDTO"></typeAlias>
+		<typeAlias type="com.itbank.mvc10.BbsDTO" alias="bDTO"></typeAlias>
+		<typeAlias type="com.itbank.mvc10.myCommentDTO" alias="cDTO"></typeAlias>
+		<typeAlias type="com.itbank.mvc10.ReplyDTO" alias="rDTO"></typeAlias> -->
+	</typeAliases>
+	<mappers>
+		<mapper resource="mapper/usedMapper.xml" />
+		<!-- <mapper resource="mapper/memberMapper.xml" />
+		<mapper resource="mapper/bbsMapper.xml" />
+		<mapper resource="mapper/commentMapper.xml" />
+		<mapper resource="mapper/replyMapper.xml" /> -->
+		
+	</mappers>
+</configuration>
