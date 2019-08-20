@@ -6,6 +6,17 @@ public class UsedDTO {
 	String bookgenre;
 	String bookauthor;
 	String bookprice;
+	String bookuser;
+	String booktel;
+	String bookaddr;
+	
+	
+	
+
+
+
+
+	
 	
 	public String getBooktitle() {
 		return booktitle;
@@ -55,9 +66,7 @@ public class UsedDTO {
 	public void setBookaddr(String bookaddr) {
 		this.bookaddr = bookaddr;
 	}
-	String bookuser;
-	String booktel;
-	String bookaddr;
+	
 	
 	
 }

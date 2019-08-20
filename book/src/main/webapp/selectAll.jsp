@@ -7,7 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+<form action ="selectAll.do">
+		<input  type ="submit" value ="목록 확인하기!">
+	</form>	
 
-정상작동
 </body>
 </html>
